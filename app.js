@@ -47,6 +47,7 @@ app.post("/compose",function (req,resp) {
     const newPost = {
         title: req.body.postTitle,
         content: req.body.postContent,
+        lnk: _.lowerCase(req.body.postTitle)
     };
     posts.push(newPost);
     resp.redirect("/");
@@ -56,7 +57,8 @@ app.get("/posts/:postName",function (req,resp) {
     // console.log(req.params);
     let b=-1;
     for(let i=0;i<posts.length;i++) {
-        if(_.lowerCase(posts[i].title) === _.lowerCase(req.params.postName)) {
+        // console.log(posts[i].lnk);
+        if(posts[i].lnk === _.lowerCase(req.params.postName)) {
             b=i; break;
         }
     }

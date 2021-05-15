@@ -3,9 +3,13 @@
 <h1>Home</h1>
 <p><%= content %></p>
 
+<% const tlen=100; %>
+
 <% for(var i=0;i<posts.length;i++) {%>
+<%    const truncStr= posts[i].content.substring(0,tlen) + " ..." ; %>
     <h3> <%= posts[i].title %> </h3>
-    <p> <%= posts[i].content %> </p>
+    <p> <%= truncStr %>
+    <a href="/posts/${<%=posts[i].lnk%>}">Read More</a></p>
 <%}%>
 <% //console.log(posts); %>
 
